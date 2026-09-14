@@ -12,8 +12,7 @@ st.set_page_config(page_title="Northstar Assist", page_icon="⭐")
 # =============================================================================
 # Configuration from environment variables (loaded from .env)
 # =============================================================================
-AGENT_ID = os.environ.get("BEDROCK_AGENT_ID", "your-agent-id")
-AGENT_ALIAS_ID = os.environ.get("BEDROCK_AGENT_ALIAS_ID", "TSTALIASID")
+HARNESS_ARN = os.environ.get("AGENTCORE_HARNESS_ARN", "")
 REGION = os.environ.get("AWS_REGION", "us-east-1")
 APP_PASSWORD = os.environ.get("APP_PASSWORD", "")  # Empty = no auth required
 
@@ -59,6 +58,10 @@ to ask questions about our company's strategy, policies, procedures, and
 internal documentation. Simply type your question below and get instant answers powered by AI.
 """)
 
+if not HARNESS_ARN:
+    st.error("Set AGENTCORE_HARNESS_ARN in your .env file to your harness ARN.")
+    st.stop()
+
 # Clear chat button
 col1, col2 = st.columns([6, 1])
 with col2:
@@ -67,14 +70,14 @@ with col2:
         st.session_state.session_id = str(uuid.uuid4())
         st.rerun()
 
-# Initialize Bedrock client
+# Initialize AgentCore data-plane client
 @st.cache_resource
-def get_bedrock_client():
-    return boto3.client("bedrock-agent-runtime", region_name=REGION)
+def get_agentcore_client():
+    return boto3.client("bedrock-agentcore", region_name=REGION)
 
-client = get_bedrock_client()
+client = get_agentcore_client()
 
-# Session state
+# Session state (a harness session ID must be at least 33 characters; a UUID is 36)
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 if "messages" not in st.session_state:
@@ -92,22 +95,33 @@ if prompt := st.chat_input("Ask a question about Northstar..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Call Bedrock Agent
+    # Call the AgentCore harness
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
-                response = client.invoke_agent(
-                    agentId=AGENT_ID,
-                    agentAliasId=AGENT_ALIAS_ID,
-                    sessionId=st.session_state.session_id,
-                    inputText=prompt
+                response = client.invoke_harness(
+                    harnessArn=HARNESS_ARN,
+                    runtimeSessionId=st.session_state.session_id,
+                    messages=[{"role": "user", "content": [{"text": prompt}]}],
                 )
 
-                # Parse streaming response
+                # Parse streaming response. The harness streams every model turn,
+                # including text written before and after a tool call, so collect
+                # all text deltas.
                 answer = ""
-                for event in response["completion"]:
-                    if "chunk" in event:
-                        answer += event["chunk"]["bytes"].decode()
+                stop_reason = None
+                for event in response["stream"]:
+                    if "contentBlockDelta" in event:
+                        delta = event["contentBlockDelta"]["delta"]
+                        if "text" in delta:
+                            answer += delta["text"]
+                    elif "messageStop" in event:
+                        stop_reason = event["messageStop"]["stopReason"]
+                    elif "runtimeClientError" in event:
+                        raise RuntimeError(event["runtimeClientError"].get("message", "Runtime error"))
+
+                if not answer and stop_reason:
+                    answer = f"_No text returned (stop reason: {stop_reason})._"
 
                 st.markdown(answer)
                 st.session_state.messages.append({"role": "assistant", "content": answer})
