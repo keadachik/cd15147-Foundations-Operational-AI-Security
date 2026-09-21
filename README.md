@@ -8,7 +8,7 @@ This repository contains the demos and hands-on exercises for the course **AI Th
 
 Before starting any exercise:
 
-1. Complete the setup walkthrough in `skill-pair-00-bedrock-setup/WALKTHROUGH.md` (the same steps are on the **Build Aria: Set Up the Demo Environment** page in Lesson 1). It builds **Aria**, the demo assistant used by every `DEMO.md`, in `us-east-1`: an Amazon Bedrock AgentCore harness, an AgentCore Gateway, and a Managed Knowledge Base. There's no model access step; models are available on first use. Plan about 2 hours for your first run.
+1. Complete the setup walkthrough in `skill-pair-00-bedrock-setup/WALKTHROUGH.md` (the same steps are on the **Build Aria: Set Up the Demo Environment** page in Lesson 1). It builds **Aria**, the demo assistant used by every `DEMO.md`, in `us-east-1`: an Amazon Bedrock AgentCore harness, an AgentCore Gateway, and a Managed Knowledge Base. There's no model access step; models are available on first use. 
 2. Have Python 3.10+ with the packages in `requirements.txt` (`pip install -r requirements.txt`). The harness API needs `boto3>=1.43.52`.
 3. Install the AWS CLI. Some demos give AWS CLI commands.
 4. Connect to your AWS account. Paste your Udacity Cloud Lab credentials from the **Cloud Resources** tab into `aws-credentials.txt`, save the file, and run `python setup_aws.py` from the repository root. Do this again each time your lab session restarts. `WALKTHROUGH.md` Step 8 has the details. If you use your own AWS credentials instead, they need access to Amazon Bedrock, Amazon Bedrock AgentCore (`bedrock-agentcore:*` actions aren't covered by `bedrock:*`), S3, CloudWatch Logs, and basic IAM read access.
