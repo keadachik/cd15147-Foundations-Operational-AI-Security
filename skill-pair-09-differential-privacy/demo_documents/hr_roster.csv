@@ -1,0 +1,13 @@
+employee_id,full_name,ssn,home_address,emergency_contact,bank_routing_number,bank_account_number,annual_salary
+E1001,Thomas Reed,900-12-3456,"100 Example Lane, Austin, TX 78701",Anne Reed (spouse) 555-0101,999000001,0000123401,340000
+E1002,Maria Lopez,900-23-4567,"200 Sample Street, Santa Fe, NM 87501",Luis Lopez (spouse) 555-0102,999000002,0000123402,288000
+E1003,David Chen,900-34-5678,"300 Placeholder Avenue, Austin, TX 78702",Grace Chen (parent) 555-0103,999000003,0000123403,212000
+E1004,Sarah Johnson,900-45-6789,"400 Fictional Road, Austin, TX 78703",Mark Johnson (spouse) 555-0104,999000004,0000123404,188000
+E1005,Kevin Okafor,900-56-7890,"500 Test Court, Round Rock, TX 78664",Ada Okafor (sibling) 555-0105,999000005,0000123405,148000
+E1006,Priya Raman,900-67-8901,"600 Demo Drive, Raleigh, NC 27601",Arjun Raman (spouse) 555-0106,999000006,0000123406,231000
+E1007,Robert Patterson,900-78-9012,"700 Mock Boulevard, Denver, CO 80202",Linda Patterson (spouse) 555-0107,999000007,0000123407,245000
+E1008,Jane Smith,900-89-0123,"800 Sample Circle, Denver, CO 80203",Paul Smith (parent) 555-0108,999000008,0000123408,142000
+E1009,Marcus Webb,900-90-1234,"900 Example Terrace, Austin, TX 78704",Tanya Webb (spouse) 555-0109,999000009,0000123409,198000
+E1010,Emily Carter,901-01-2345,"110 Placeholder Way, Aurora, CO 80010",Jim Carter (parent) 555-0110,999000010,0000123410,122000
+E1011,Lauren Kim,901-12-3456,"120 Fictional Place, Austin, TX 78705",Daniel Kim (sibling) 555-0111,999000011,0000123411,201000
+E1012,Daniel Brooks,901-23-4567,"130 Test Street, Pflugerville, TX 78660",Rosa Brooks (parent) 555-0112,999000012,0000123412,112000

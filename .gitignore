@@ -2,13 +2,21 @@
 # Secrets and credentials
 # Nothing in this repo should ever contain live AWS credentials. Students work
 # in temporary AWS accounts and may fork this repo; these patterns keep keys
-# out of version control. Note that .env.example IS tracked on purpose.
+# out of version control.
 # ---------------------------------------------------------------------------
+
+# setup_aws.py writes the real .env here. Everything else under .env.* is a
+# local variant; .env.example is the tracked template and is exempted below.
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+
+# AWS CLI profiles and console credential downloads.
 credentials
 .aws/
+*credentials*.csv
+*accessKeys.csv
+
 *.pem
 *.key
 .streamlit/secrets.toml
@@ -44,6 +52,11 @@ __pycache__/
 venv/
 env/
 .ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
 
 # ---------------------------------------------------------------------------
 # Editors and IDEs
@@ -51,6 +64,8 @@ env/
 .vscode/
 .idea/
 *.swp
+*.swo
+*~
 
 # ---------------------------------------------------------------------------
 # Logs and local scratch

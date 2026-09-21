@@ -1,0 +1,13 @@
+employee_id,full_name,email,phone_extension,department,manager_name,office_location,salary_band
+E1001,Thomas Reed,thomas.reed@vantagetech.example,x4401,Executive,Board of Directors,Austin,E1
+E1002,Maria Lopez,maria.lopez@vantagetech.example,x4402,Engineering,Thomas Reed,Remote,M4
+E1003,David Chen,david.chen@vantagetech.example,x4403,Engineering,Maria Lopez,Austin,M2
+E1004,Sarah Johnson,sarah.johnson@vantagetech.example,x4404,Engineering,David Chen,Austin,L5
+E1005,Kevin Okafor,kevin.okafor@vantagetech.example,x4405,Engineering,David Chen,Austin,L4
+E1006,Priya Raman,priya.raman@vantagetech.example,x4406,Engineering,Maria Lopez,Remote,L6
+E1007,Robert Patterson,robert.patterson@vantagetech.example,x4407,Finance,Thomas Reed,Denver,M3
+E1008,Jane Smith,jane.smith@vantagetech.example,x4408,Finance,Robert Patterson,Denver,L4
+E1009,Marcus Webb,marcus.webb@vantagetech.example,x4409,Sales,Thomas Reed,Austin,M3
+E1010,Emily Carter,emily.carter@vantagetech.example,x4410,Sales,Marcus Webb,Denver,L4
+E1011,Lauren Kim,lauren.kim@vantagetech.example,x4411,Human Resources,Thomas Reed,Austin,M2
+E1012,Daniel Brooks,daniel.brooks@vantagetech.example,x4412,IT,Maria Lopez,Austin,L3

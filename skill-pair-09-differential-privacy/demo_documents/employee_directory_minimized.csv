@@ -1,0 +1,13 @@
+employee_id,department,office_location
+E1001,Executive,Austin
+E1002,Engineering,Remote
+E1003,Engineering,Austin
+E1004,Engineering,Austin
+E1005,Engineering,Austin
+E1006,Engineering,Remote
+E1007,Finance,Denver
+E1008,Finance,Denver
+E1009,Sales,Austin
+E1010,Sales,Denver
+E1011,Human Resources,Austin
+E1012,IT,Austin
